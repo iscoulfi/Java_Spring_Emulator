@@ -54,7 +54,7 @@ public class MainController {
              responseDTO.setClientId(clientId);
              responseDTO.setAccount(requestDTO.getAccount());
              responseDTO.setCurrency(currency);
-             responseDTO.setBalance(getBalance(maxLimit));
+             responseDTO.setBalance(randomBalance(maxLimit));
              responseDTO.setMaxLimit(maxLimit);
 
              log.error("********** RequestDTO **********" + mapper.writerWithDefaultPrettyPrinter().writeValueAsString(requestDTO));
@@ -66,7 +66,7 @@ public class MainController {
         }
     }
 
-    static BigDecimal getBalance(BigDecimal limit){
+    static BigDecimal randomBalance(BigDecimal limit){
         return new BigDecimal(Double.toString(new Random().nextDouble() * limit.doubleValue())).setScale(2, RoundingMode.HALF_UP);
     }
 }
